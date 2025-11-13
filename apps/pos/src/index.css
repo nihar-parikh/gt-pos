@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* Ensure html, body, and the root React div (#root) take full height */
+html, body, #root {
+  height: 100%; /* Or min-height: 100vh; is also an option */
+  margin: 0;
+  padding: 0;
+  /* You can also use Tailwind's @apply for h-full if you prefer: */
+  /* @apply h-full; */
+}

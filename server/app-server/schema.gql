@@ -1,0 +1,182 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  username: String!
+  phone: String!
+  password: String!
+  isAdmin: Boolean!
+}
+
+type CreateAuthInput {
+  accessToken: String!
+  username: String!
+  isAdmin: Boolean!
+}
+
+type SubTask {
+  id: Int!
+  description: String!
+  task: Task!
+}
+
+type Task {
+  id: Int!
+  title: String!
+  description: String!
+  subTasks: [SubTask!]
+}
+
+type VerifyOtpResponse {
+  message: String!
+  token: String!
+}
+
+type ResetPasswordResponse {
+  message: String!
+}
+
+type SendOtpResponse {
+  expiresTime: Int
+  otp: Int
+}
+
+type InventoryStock {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type TenantOnboarding {
+  id: ID!
+  businessName: String!
+  businessType: String!
+  businessLocation: String!
+  website: String!
+  logoUrl: String
+  phone: String!
+  email: String!
+  address1: String!
+  address2: String
+  state: String!
+  city: String!
+  zipCode: String
+  fiscalYear: String!
+  baseCurrency: String!
+  timeZone: String!
+  dateFormat: String!
+  language: String!
+  module1: Boolean!
+  module2: Boolean!
+  module3: Boolean!
+  module4: Boolean!
+  module5: Boolean!
+  module6: Boolean!
+  module7: Boolean!
+  module8: Boolean!
+  module9: Boolean!
+}
+
+type Query {
+  tasks: [Task!]!
+  task(id: Int!): Task
+  subTasks: [SubTask!]!
+  subTask(id: Int!): SubTask
+  tenants: [TenantOnboarding!]!
+  tenant(id: Int!): TenantOnboarding
+  users: [User!]!
+  inventoryStocks: [InventoryStock!]!
+  inventoryStock(id: Int!): InventoryStock!
+}
+
+type Mutation {
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task
+  deleteTask(id: Int!): Boolean!
+  createSubTask(description: String!, taskId: Int!): SubTask!
+  updateSubTask(id: Int!, description: String!): SubTask
+  deleteSubTask(id: Int!): Boolean!
+  createTenant(input: CreateTenantOnboardingInput!): TenantOnboarding!
+  removeTenant(id: Int!): Boolean!
+  signUp(input: CreateUserInput!): User!
+  login(credentials: CreateUserInput!): CreateAuthInput!
+  createInventoryStock(createInventoryStockInput: CreateInventoryStockInput!): InventoryStock!
+  updateInventoryStock(updateInventoryStockInput: UpdateInventoryStockInput!): InventoryStock!
+  removeInventoryStock(id: Int!): InventoryStock!
+  sendOtp(input: SendOtpInput!): SendOtpResponse!
+  verifyOtp(input: VerifyOtpInput!): VerifyOtpResponse!
+  resetPassword(input: ResetPasswordInput!): ResetPasswordResponse!
+}
+
+input CreateTaskInput {
+  title: String!
+  description: String!
+}
+
+input UpdateTaskInput {
+  title: String
+  description: String
+  id: Int!
+}
+
+input CreateTenantOnboardingInput {
+  businessName: String!
+  businessType: String!
+  businessLocation: String!
+  website: String!
+  logoUrl: String
+  phone: String!
+  email: String!
+  address1: String!
+  address2: String
+  state: String!
+  city: String!
+  zipCode: String
+  fiscalYear: String!
+  baseCurrency: String!
+  timeZone: String!
+  dateFormat: String!
+  language: String!
+  module1: Boolean
+  module2: Boolean
+  module3: Boolean
+  module4: Boolean
+  module5: Boolean
+  module6: Boolean
+  module7: Boolean
+  module8: Boolean
+  module9: Boolean
+}
+
+input CreateUserInput {
+  username: String!
+  password: String!
+  isAdmin: Boolean!
+}
+
+input CreateInventoryStockInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateInventoryStockInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input SendOtpInput {
+  phone: String!
+}
+
+input VerifyOtpInput {
+  phone: String!
+  otp: String!
+}
+
+input ResetPasswordInput {
+  phone: String!
+  resetToken: String!
+  newPassword: String!
+}

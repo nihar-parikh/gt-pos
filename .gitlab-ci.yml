@@ -1,0 +1,24 @@
+stages:
+  - triggers
+
+variables:
+  RULES_CHANGES_PATH: "**/*"
+
+
+trigger_gtpos_api:
+  stage: triggers
+  trigger:
+    include: server/express-api/.gitlab-ci.yml
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == 'main' || $CI_COMMIT_BRANCH == 'production'
+      changes:
+        - "server/express-api/**/*"
+
+trigger_gtpos_web:
+  stage: triggers
+  trigger:
+    include: apps/web/.gitlab-ci.yml
+  rules:
+     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == 'main' || $CI_COMMIT_BRANCH == 'production'
+       changes:
+        - "apps/web/**/*"

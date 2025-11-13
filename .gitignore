@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+.env
+*.env
+
+# Turbo repo
+.turbo/
+
+# Web app
+apps/pos/node_modules/
+apps/pos/package-lock.json
+apps/pos/dist/
+apps/pos/.env
+
+apps/cpos/node_modules/
+apps/cpos/package-lock.json
+apps/cpos/dist/
+apps/cpos/.env
+
+# Electron app
+apps/electron/node_modules/
+apps/electron/dist/
+apps/electron/web/
+apps/electron/pos/
+
+# Capacitor app
+apps/capacitor/node_modules/
+
+# Server app
+server/app-server/node_modules/
+server/app-server/dist/
+server/app-server/.env
+
+# general
+.vscode/
